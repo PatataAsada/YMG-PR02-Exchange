@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">YMG - PR02 - Money</string>
+    <string name="activity_main_lblCuantity">Cuantity</string>
+    <string name="activity_main_lblOriginCoin">Origin coin</string>
+    <string name="activity_main_lblDestinyCoin">Destiny coin</string>
+    <string name="activity_main_btnTransform">Exchange</string>
+    <string name="activity_main_lblDollar">Dollar</string>
+    <string name="activity_main_lblEuro">Euro</string>
+    <string name="activity_main_lblPound">Pound</string>
+</resources>
