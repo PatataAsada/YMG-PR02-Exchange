@@ -7,4 +7,7 @@
     <string name="activity_main_lblDollar">Dollar</string>
     <string name="activity_main_lblEuro">Euro</string>
     <string name="activity_main_lblPound">Pound</string>
+    <string name="default_txt_cuantity">0.00</string>
+    <string name="imgFrom_desc">selected \'From coin\' icon</string>
+    <string name="imgTo_desc">Selected \'To coin\' icon</string>
 </resources>

@@ -2,7 +2,9 @@ package es.iessaladillo.yeraymoreno.ymg_pr02_money;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgFrom;
     private ImageView imgTo;
 
+    private Button btnExchange;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews(){
         txtCuantity = findViewById(R.id.txtCuantity);
-        txtCuantity.setText("0.00");
 
         rbFromDollar = findViewById(R.id.rbFromDollar);
         rbToDollar = findViewById(R.id.rbToDollar);
@@ -45,8 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
         imgFrom = findViewById(R.id.imgFrom);
         imgTo = findViewById(R.id.imgTo);
+
+        btnExchange = findViewById(R.id.btnExchange);
+
         //Listeners
         //Dollar listeners
+            //From Dollar
         rbFromDollar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 imgFrom.setImageResource(R.drawable.ic_dollar);
             }
         });
+            //ToDollar
         rbToDollar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Euro Listeners
+            //FromEuro
         rbFromEuro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 imgFrom.setImageResource(R.drawable.ic_euro);
             }
         });
+            //ToEuro
         rbToEuro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Pound Listeners
+            //FromPound
         rbFromPound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 imgFrom.setImageResource(R.drawable.ic_pound);
             }
         });
+            //ToPound
         rbToPound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
                 rbFromEuro.setEnabled(true);
                 rbFromPound.setEnabled(false);
                 imgTo.setImageResource(R.drawable.ic_pound);
+            }
+        });
+        btnExchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtCuantity.getText().toString().equals("")){
+                    txtCuantity.setText(R.string.default_txt_cuantity);
+                }
             }
         });
     }

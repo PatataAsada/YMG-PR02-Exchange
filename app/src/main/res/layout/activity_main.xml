@@ -19,7 +19,9 @@
         android:labelFor="@+id/txtCuantity"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:inputType="number|numberDecimal"
-        android:text="0.00">
+        android:selectAllOnFocus="true"
+        android:gravity="end"
+        android:text="@string/default_txt_cuantity">
         <requestFocus/>
     </EditText>
 
@@ -41,7 +43,7 @@
             android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblDollar"/>
         <RadioButton
             android:id="@+id/rbFromEuro"
@@ -49,7 +51,7 @@
             android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblEuro"/>
         <RadioButton
             android:id="@+id/rbFromPound"
@@ -57,12 +59,13 @@
             android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblPound"/>
         <ImageView
             android:id="@+id/imgFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/imgFrom_desc"
             android:src="@drawable/ic_euro"/>
 
     </RadioGroup>
@@ -84,7 +87,7 @@
             android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblDollar"/>
         <RadioButton
             android:id="@+id/rbToEuro"
@@ -92,7 +95,7 @@
             android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblEuro"/>
         <RadioButton
             android:id="@+id/rbToPound"
@@ -100,12 +103,13 @@
             android:checked="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/activity_right_margin"
+            android:layout_marginEnd="@dimen/activity_right_margin"
             android:text="@string/activity_main_lblPound"/>
         <ImageView
             android:id="@+id/imgTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/imgTo_desc"
             android:src="@drawable/ic_dollar"/>
 
     </RadioGroup>
