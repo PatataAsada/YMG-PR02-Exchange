@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import static java.lang.Double.parseDouble;
+import static java.lang.Float.valueOf;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,15 +131,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void exchange() {
-        EditText from;
-        EditText to;
+        RadioButton from;
+        RadioButton to;
         String value = txtCuantity.getText().toString();
-        double eur_dol = 1.16;
-        double dol_eur = 0.86;
-        double dol_pou = 0.77;
-        double pou_dol = 1.30;
-        double pou_eur = 1.12;
-        double eur_pou = 0.89;
+        float eur_dol = (float) 1.16;
+        float dol_eur = (float) 0.86;
+        float dol_pou = (float) 0.77;
+        float pou_dol = (float) 1.30;
+        float pou_eur = (float) 1.12;
+        float eur_pou = (float) 0.89;
+        float result;
+        String message="";
 
         if(txtCuantity.getText().toString().equals("")){
             txtCuantity.setText(R.string.default_txt_cuantity);
@@ -150,27 +152,34 @@ public class MainActivity extends AppCompatActivity {
 
             if (from.getId()==rbFromDollar.getId()){
                 if (to.getId()==rbToEuro.getId()){
-                    Toast.makeText(this,value+" $ = "+(parseDouble(value)*dol_eur)+" €",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*dol_eur;
+                    message = value+" $ = "+result+" €";
                 }else{
-                    Toast.makeText(this,value+" $ = "+(parseDouble(value)*dol_pou)+" £",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*dol_pou;
+                    message = value+" $ = "+result+" £";
                 }
             }
             if (from.getId()==rbFromEuro.getId()){
                 if (to.getId()==rbToDollar.getId()){
-                    Toast.makeText(this,value+" € = "+(parseDouble(value)*eur_dol)+" $",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*eur_dol;
+                    message = value+" € = "+result+" $";
                 }else{
-                    Toast.makeText(this,value+" € = "+(parseDouble(value)*eur_pou)+" £",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*eur_pou;
+                    message = value+" € = "+result+" £";
                 }
             }
             if (from.getId()==rbFromPound.getId()){
                 if (to.getId()==rbToEuro.getId()){
-                    Toast.makeText(this,value+" £ = "+(parseDouble(value)*pou_eur)+" €",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*pou_eur;
+                    message = value+" £ = "+result+" €";
                 }else{
-                    Toast.makeText(this,value+" £ = "+(parseDouble(value)*pou_dol)+" $",Toast.LENGTH_SHORT).show();
+                    result = valueOf(value)*pou_dol;
+                    message = value+" £ = "+result+" $";
                 }
             }
 
         }
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }
