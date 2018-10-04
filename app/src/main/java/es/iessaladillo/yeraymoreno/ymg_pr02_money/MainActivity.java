@@ -1,6 +1,5 @@
 package es.iessaladillo.yeraymoreno.ymg_pr02_money;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static java.lang.Float.valueOf;
 
@@ -38,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        txtCuantity = findViewById(R.id.txtCuantity);
+        // TE RECOMIENDO QUE USES ActivityCompat.requireViewById(), LANZA UNA EXCEPCIÓN SI EL
+        // ID NO SE ENCUENTRA, EN VEZ DE RETORNAR NULL. ASÍ ESTÁS SEGURO DE QUE LA VARIABLE NO ES
+        // NULL.
+        txtCuantity = findViewById(R.id.txtAmount);
 
         rgFrom = findViewById(R.id.rgFrom);
         rgTo = findViewById(R.id.rgTo);
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //Listeners
         //Dollar listeners
             //From Dollar
+        // POR QUÉ NO USAS LAMBDAS?
         rbFromDollar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 rbToEuro.setEnabled(true);
                 rbToPound.setEnabled(true);
                 imgFrom.setImageResource(R.drawable.ic_dollar);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgFrom.setTag(R.drawable.ic_dollar);
             }
         });
             //ToDollar
@@ -77,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 rbFromEuro.setEnabled(true);
                 rbFromPound.setEnabled(true);
                 imgTo.setImageResource(R.drawable.ic_dollar);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgTo.setTag(R.drawable.ic_dollar);
             }
         });
         //Euro Listeners
@@ -88,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 rbToEuro.setEnabled(false);
                 rbToPound.setEnabled(true);
                 imgFrom.setImageResource(R.drawable.ic_euro);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgFrom.setTag(R.drawable.ic_euro);
             }
         });
             //ToEuro
@@ -98,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 rbFromEuro.setEnabled(false);
                 rbFromPound.setEnabled(true);
                 imgTo.setImageResource(R.drawable.ic_euro);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgTo.setTag(R.drawable.ic_euro);
             }
         });
         //Pound Listeners
@@ -109,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                 rbToEuro.setEnabled(true);
                 rbToPound.setEnabled(false);
                 imgFrom.setImageResource(R.drawable.ic_pound);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgFrom.setTag(R.drawable.ic_pound);
             }
         });
             //ToPound
@@ -120,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 rbFromEuro.setEnabled(true);
                 rbFromPound.setEnabled(false);
                 imgTo.setImageResource(R.drawable.ic_pound);
+                // AGREGO ESTA LINEA PARA QUE PASE TESTS
+                imgTo.setTag(R.drawable.ic_pound);
             }
         });
         btnExchange.setOnClickListener(new View.OnClickListener() {
@@ -128,13 +145,16 @@ public class MainActivity extends AppCompatActivity {
                 exchange();
             }
         });
+        // AGREGO ESTAS LINEAS PARA QUE PASE TESTS
+        imgFrom.setTag(R.drawable.ic_euro);
+        imgTo.setTag(R.drawable.ic_dollar);
     }
 
     private void exchange() {
         RadioButton from;
         RadioButton to;
         String value = txtCuantity.getText().toString();
-        float eur_dol = (float) 1.16;
+        float eur_dol = (float) 1.17; // LO CAMBIO PARA QUE PASE TEST
         float dol_eur = (float) 0.86;
         float dol_pou = (float) 0.77;
         float pou_dol = (float) 1.30;
@@ -143,13 +163,14 @@ public class MainActivity extends AppCompatActivity {
         float result;
         String message="";
 
+        // USA TextUtis.equals() EN VEZ DE equals(), YA QUE GESTIONA AUTOMÁTICAMENTE EL NULL.
         if(txtCuantity.getText().toString().equals("")){
             txtCuantity.setText(R.string.default_txt_cuantity);
         }else{
             from = findViewById(rgFrom.getCheckedRadioButtonId());
             to = findViewById(rgTo.getCheckedRadioButtonId());
 
-
+            // USA Code -> Reformat code... PARA QUE EL CÓDIGO TE QUEDE BONITO.
             if (from.getId()==rbFromDollar.getId()){
                 if (to.getId()==rbToEuro.getId()){
                     result = valueOf(value)*dol_eur;
@@ -179,6 +200,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+        // USA UN RECURSO DE CADENA CON PARÁMETROS EN VEZ DE TENER QUE ANDAR CONCATENANDO.
+        // LOS VALORES DE MONEDA SUELEN MOSTRASRSE SÓLO CON DOS DECIMALES.
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
