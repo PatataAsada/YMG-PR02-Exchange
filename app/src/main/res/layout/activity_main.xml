@@ -4,19 +4,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/activity_vertical_margin">
-    <!-- Reminder for myself, order is important -->
+    <!-- Reminder for myself, order is important (that's you with LinearLayout but no with others
+     ;-)
+     -->
 
+    <!-- It's Quantity, not Cuantity -->
     <TextView
         android:id="@+id/lblCuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:labelFor="@+id/txtCuantity"
+        android:labelFor="@+id/txtAmount"
         android:text="@string/activity_main_lblCuantity"/>
+    <!-- TE RECOMIENDO QUE HAGAS Code -> Reformat code PARA QUE EL CÓDIGO TE QUEDE BONITO -->
+    <!-- EL android:labelFor SE LE PONE SOLO AL TextView -->
     <EditText
-        android:id="@+id/txtCuantity"
+        android:id="@+id/txtAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:labelFor="@+id/txtCuantity"
+        android:labelFor="@+id/txtAmount"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:inputType="number|numberDecimal"
         android:selectAllOnFocus="true"
